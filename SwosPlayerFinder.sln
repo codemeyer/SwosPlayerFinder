@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwosPlayerFinder.Core", "SwosPlayerFinder.Core\SwosPlayerFinder.Core.csproj", "{B772C4DD-BEA0-4B4F-9F93-062099FA9638}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwosPlayerFinder.Tests.Core", "SwosPlayerFinder.Tests.Core\SwosPlayerFinder.Tests.Core.csproj", "{A3C45B4E-BDA1-4354-9FEE-19EA6E2C7BC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{20A6DE63-5DA5-47C7-B2A6-BDB989E95BE3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwosPlayerFinder.IntegrationTests", "SwosPlayerFinder.IntegrationTests\SwosPlayerFinder.IntegrationTests.csproj", "{4527B6CE-50E0-4FE2-B5B3-656B3797B870}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B772C4DD-BEA0-4B4F-9F93-062099FA9638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B772C4DD-BEA0-4B4F-9F93-062099FA9638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B772C4DD-BEA0-4B4F-9F93-062099FA9638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B772C4DD-BEA0-4B4F-9F93-062099FA9638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3C45B4E-BDA1-4354-9FEE-19EA6E2C7BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C45B4E-BDA1-4354-9FEE-19EA6E2C7BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C45B4E-BDA1-4354-9FEE-19EA6E2C7BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C45B4E-BDA1-4354-9FEE-19EA6E2C7BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4527B6CE-50E0-4FE2-B5B3-656B3797B870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4527B6CE-50E0-4FE2-B5B3-656B3797B870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4527B6CE-50E0-4FE2-B5B3-656B3797B870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4527B6CE-50E0-4FE2-B5B3-656B3797B870}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
