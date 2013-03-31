@@ -40,16 +40,6 @@ namespace Manicomio.SwosPlayerFinder.IntegrationTests
                 string assemblyDirectory = Path.GetDirectoryName(assemblyLocation);
                 return Path.Combine(assemblyDirectory, @"ExampleData\TEAM.036");
             }
-
-            //[Fact]
-            //public void MissingFileThrowsException()
-            //{
-            //    string path = @"";
-
-            //    var reader = new TeamDataFileReader();
-
-            //    reader.Invoking(r => r.Read(path)).ShouldThrow<FileNotFoundException>();
-            //}
         }
     }
 }

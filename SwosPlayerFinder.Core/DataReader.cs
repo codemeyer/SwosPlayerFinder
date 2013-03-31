@@ -43,15 +43,8 @@ namespace Manicomio.SwosPlayerFinder.Core
 
             return (!_irrelevantFileExtensions.Contains(extension));
 
-            // 068 = landslag (e.g. CAMEROON)
-            // 072 = trams
-            // 074 = (gamla) landslag (e.g. SPAIN)
-            // 080 = landslag (e.g. SPAIN)
-            // 081 = landslag (e.g. CAMEROON)
-            // 082 = landslag (e.g. BRAZIL)
-            // 083 = landslag (e.g. UNITED STATES)
-            // 084 = landslag (e.g. JAPAN)
-            // 085 = landslag (e.g. AUSTRALIA, NEW ZEALAND)
+            // 068, 074, 080, 081, 082, 083, 084, 085 = national teams
+            // 072 = "funny" teams
         }
     }
 }

@@ -50,18 +50,4 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
 
         }
     }
-
-
-    //  1 = nationality
-    //  1
-    // 23 = namn
-    //  1 = position/head
-    //  1
-    //  1 = passing + något mer
-    //  1 = shooting + heading
-    //  1 = tackling + control
-    //  1 = speed + finishing
-
-    //  1 = value
-    //  5 = career-stuff ?
 }

@@ -6,8 +6,6 @@
 
         public string TeamName { get; set; }
 
-        //public string Nationality { get; set; }
-
         public int? Passing { get; set; }
         
         public int? Shooting { get; set; }
