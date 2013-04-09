@@ -36,15 +36,15 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
             }
 
             [Fact]
-            public void SearchingForPlayersWithPassingAtLeastTwoOnlyReturnsPlayerMatchingSkill()
+            public void SearchingForPlayersWithPassingBetweenFourAndSevenOnlyReturnsPlayerMatchingSkill()
             {
                 List<Player> players = GetSearchSampleData();
                 var finder = new Finder();
-                var criteria = new Criteria { Passing = 2 };
+                var criteria = new Criteria { PassingFrom = 4, PassingTo = 7 };
 
                 List<Player> result = finder.Find(players, criteria);
 
-                result.Should().Match(r => r.All(p => p.Skills.Passing >= 2));
+                result.Should().Match(r => r.All(p => p.Skills.Passing >= 4 && p.Skills.Passing <= 7));
             }
 
             [Fact]
@@ -52,11 +52,11 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
             {
                 List<Player> players = GetSearchSampleData();
                 var finder = new Finder();
-                var criteria = new Criteria { Shooting = 8 };
+                var criteria = new Criteria { ShootingFrom = 8, ShootingTo = 8 };
 
                 List<Player> result = finder.Find(players, criteria);
 
-                result.Should().Match(r => r.All(p => p.Skills.Shooting >= 8));
+                result.Should().Match(r => r.All(p => p.Skills.Shooting == 8));
             }
 
             [Fact]
@@ -64,7 +64,7 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
             {
                 List<Player> players = GetSearchSampleData();
                 var finder = new Finder();
-                var criteria = new Criteria { Heading = 5 };
+                var criteria = new Criteria { HeadingFrom = 5, HeadingTo = 8 };
 
                 List<Player> result = finder.Find(players, criteria);
 
@@ -76,7 +76,7 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
             {
                 List<Player> players = GetSearchSampleData();
                 var finder = new Finder();
-                var criteria = new Criteria { Tackling = 6 };
+                var criteria = new Criteria { TacklingFrom = 6, TacklingTo = 8 };
 
                 List<Player> result = finder.Find(players, criteria);
 
@@ -88,7 +88,7 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
             {
                 List<Player> players = GetSearchSampleData();
                 var finder = new Finder();
-                var criteria = new Criteria { Control = 6 };
+                var criteria = new Criteria { ControlFrom = 6, ControlTo = 8 };
 
                 List<Player> result = finder.Find(players, criteria);
 
@@ -100,7 +100,7 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
             {
                 List<Player> players = GetSearchSampleData();
                 var finder = new Finder();
-                var criteria = new Criteria { Speed = 6 };
+                var criteria = new Criteria { SpeedFrom = 6, SpeedTo = 8 };
 
                 List<Player> result = finder.Find(players, criteria);
 
@@ -112,11 +112,23 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
             {
                 List<Player> players = GetSearchSampleData();
                 var finder = new Finder();
-                var criteria = new Criteria { Finishing = 6 };
+                var criteria = new Criteria { FinishingFrom = 6, FinishingTo = 8 };
 
                 List<Player> result = finder.Find(players, criteria);
 
                 result.Should().Match(r => r.All(p => p.Skills.Finishing >= 6));
+            }
+
+            [Fact]
+            public void SearchingForPlayersWithValueReturnsPlayerMatchingValue()
+            {
+                List<Player> players = GetSearchSampleData();
+                var finder = new Finder();
+                var criteria = new Criteria { ValueFrom = 100, ValueTo = 500 };
+
+                List<Player> result = finder.Find(players, criteria);
+
+                result.Should().Match(r => r.All(p => p.Value >= 100 && p.Value <= 500));
             }
 
             [Fact]
@@ -126,13 +138,13 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
                 var finder = new Finder();
                 var criteria = new Criteria
                     {
-                        Control = 3,
-                        Finishing = 3,
-                        Heading = 3,
-                        Passing = 3,
-                        Shooting = 3,
-                        Speed = 3,
-                        Tackling = 3
+                        ControlFrom = 3,
+                        FinishingFrom = 3,
+                        HeadingFrom = 3,
+                        PassingFrom = 3,
+                        ShootingFrom = 3,
+                        SpeedFrom = 3,
+                        TacklingFrom = 3
                     };
 
                 List<Player> result = finder.Find(players, criteria);
@@ -148,6 +160,18 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
                                                ));
             }
 
+            [Fact]
+            public void SearchingForGoalkeepersOnlyReturnsGoalkeepers()
+            {
+                List<Player> players = GetSearchSampleData();
+                var finder = new Finder();
+                var criteria = new Criteria { Positions = new List<Position> { Position.Goalkeeper }};
+
+                List<Player> result = finder.Find(players, criteria);
+
+                result.Should().Match(r => r.All(p => p.Position == Position.Goalkeeper));
+            }
+
             private List<Player> GetSearchSampleData()
             {
                 var players = new List<Player>();
@@ -159,6 +183,15 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
                     player.Name = string.Format("PLAYER {0}", i);
                     player.Team.Name = string.Format("TEAM {0}", i);
 
+                    if (random.Next(1, 4) == 1)
+                    {
+                        player.Position = Position.Goalkeeper;
+                    }
+                    else
+                    {
+                        player.Position = Position.Attacker;
+                    }
+
                     player.Skills.Passing = random.Next(1, 8);
                     player.Skills.Shooting = random.Next(1, 8);
                     player.Skills.Heading = random.Next(1, 8);
@@ -166,6 +199,8 @@ namespace Manicomio.SwosPlayerFinder.Tests.Core
                     player.Skills.Control = random.Next(1, 8);
                     player.Skills.Speed = random.Next(1, 8);
                     player.Skills.Finishing = random.Next(1, 8);
+
+                    player.Value = random.Next(0, 16000);
 
                     players.Add(player);
                 }

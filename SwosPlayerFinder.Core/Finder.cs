@@ -19,39 +19,33 @@ namespace Manicomio.SwosPlayerFinder.Core
                 filtered = filtered.Where(p => p.Team.Name.ToLowerInvariant().Contains(criteria.TeamName.ToLowerInvariant()));
             }
 
-            if (criteria.Passing.HasValue)
-            {
-                filtered = filtered.Where(p => p.Skills.Passing >= criteria.Passing);
-            }
+            filtered = filtered.Where(p => p.Skills.Passing >= criteria.PassingFrom && 
+                                           p.Skills.Passing <= criteria.PassingTo);
 
-            if (criteria.Shooting.HasValue)
-            {
-                filtered = filtered.Where(p => p.Skills.Shooting >= criteria.Shooting);
-            }
+            filtered = filtered.Where(p => p.Skills.Shooting >= criteria.ShootingFrom &&
+                                           p.Skills.Shooting <= criteria.ShootingTo);
 
-            if (criteria.Heading.HasValue)
-            {
-                filtered = filtered.Where(p => p.Skills.Heading >= criteria.Heading);
-            }
-            
-            if (criteria.Tackling.HasValue)
-            {
-                filtered = filtered.Where(p => p.Skills.Tackling >= criteria.Tackling);
-            }
+            filtered = filtered.Where(p => p.Skills.Heading >= criteria.HeadingFrom &&
+                                           p.Skills.Heading <= criteria.HeadingTo);
 
-            if (criteria.Control.HasValue)
-            {
-                filtered = filtered.Where(p => p.Skills.Control >= criteria.Control);
-            }
+            filtered = filtered.Where(p => p.Skills.Tackling >= criteria.TacklingFrom &&
+                                           p.Skills.Tackling <= criteria.TacklingTo);
 
-            if (criteria.Speed.HasValue)
-            {
-                filtered = filtered.Where(p => p.Skills.Speed >= criteria.Speed);
-            }
+            filtered = filtered.Where(p => p.Skills.Control >= criteria.ControlFrom &&
+                                           p.Skills.Control <= criteria.ControlTo);
 
-            if (criteria.Finishing.HasValue)
+            filtered = filtered.Where(p => p.Skills.Speed >= criteria.SpeedFrom &&
+                                           p.Skills.Speed <= criteria.SpeedTo);
+
+            filtered = filtered.Where(p => p.Skills.Finishing >= criteria.FinishingFrom &&
+                                           p.Skills.Finishing <= criteria.FinishingTo);
+
+            filtered = filtered.Where(p => p.Value >= criteria.ValueFrom &&
+                                           p.Value <= criteria.ValueTo);
+
+            if (criteria.Positions.Any())
             {
-                filtered = filtered.Where(p => p.Skills.Finishing >= criteria.Finishing);
+                filtered = filtered.Where(p => criteria.Positions.Contains(p.Position));
             }
 
             return filtered.ToList();

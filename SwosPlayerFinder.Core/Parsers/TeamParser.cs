@@ -19,8 +19,8 @@ namespace Manicomio.SwosPlayerFinder.Core
 
         private static string GetName(byte[] teamData)
         {
-            byte[] nameBytes = new byte[25];
-            Array.Copy(teamData, 5, nameBytes, 0, 25);
+            byte[] nameBytes = new byte[19];
+            Array.Copy(teamData, 5, nameBytes, 0, 19);
 
             string name = Encoding.ASCII.GetString(nameBytes);
             name = name.Replace("\0", string.Empty);
