@@ -110,6 +110,11 @@ namespace Manicomio.SwosPlayerFinder.Windows
             DataFolderTextBox.Text = folder;
         }
 
+        public void DisplayDataDirectoryNotFound()
+        {
+            MessageBox.Show("The specified game data directory was not found.", Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private string GetPositionCode(Position position)
         {
             switch (position)
@@ -231,6 +236,8 @@ namespace Manicomio.SwosPlayerFinder.Windows
                 DataFolderTextBox.Text = browserDialog.SelectedPath;
             }
         }
+
+
 
 
     }

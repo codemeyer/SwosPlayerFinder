@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Manicomio.SwosPlayerFinder.Core;
 
@@ -16,6 +17,12 @@ namespace Manicomio.SwosPlayerFinder.Windows
 
         public void LoadPlayers(string path)
         {
+            if (!Directory.Exists(path))
+            {
+                _view.DisplayDataDirectoryNotFound();
+                return;
+            }
+
             var fileFinder = new FileFinder();
             var fileReader = new TeamDataFileReader();
             var reader = new DataReader(fileFinder, fileReader);

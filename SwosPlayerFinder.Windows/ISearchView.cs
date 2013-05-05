@@ -8,5 +8,6 @@ namespace Manicomio.SwosPlayerFinder.Windows
         void DisplaySearchResults(List<Player> foundPlayers);
         void UpdateLoadedPlayerCount(int count);
         void SetLatestFolder(string folder);
+        void DisplayDataDirectoryNotFound();
     }
 }
